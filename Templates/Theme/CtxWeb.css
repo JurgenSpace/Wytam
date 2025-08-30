@@ -1,0 +1,372 @@
+@import url("./Font.scss");
+
+:root{
+    --ctxweb-primary: #a259f7;           
+    --ctxweb-primary-hover: #c084fc;    
+    --ctxweb-primary-active: #7c3aed;  
+    --ctxweb-primary-disabled: #e0bbff;
+    
+    --ctxweb-secondary: #ff5fa2;        
+    --ctxweb-secondary-hover: #ff85b3;  
+    --ctxweb-secondary-active: #d72660; 
+    --ctxweb-secondary-disabled: #ffd6e0;
+    
+    --ctxweb-background: #151415;       
+    --ctxweb-background-alt: #1a1519;   
+    --ctxweb-background-hover: #101010;
+    --ctxweb-background-active: #151515; 
+    --ctxweb-background-disabled: #202020;
+    
+    --ctxweb-text-primary: #3a2244;     
+    --ctxweb-text-secondary: #a259f7;  
+    --ctxweb-text-tertiary: #ff5fa2;    
+    --ctxweb-text-disabled: #e0bbff;     
+    
+    --ctxweb-border-default: #e0bbff;   
+    --ctxweb-border-hover: #c084fc;      
+    --ctxweb-border-active: #a259f7;     
+    --ctxweb-border-disabled: #f3e8ff; 
+    
+    --ctxweb-shadow-light: rgba(162, 89, 247, 0.1);
+    --ctxweb-shadow-medium: rgba(255, 95, 162, 0.2);
+    --ctxweb-shadow-dark: rgba(58, 34, 68, 0.3);
+    
+    --ctxweb-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --ctxweb-font-family-alt: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--ctxweb-font-family);
+    background-color: var(--ctxweb-background);
+    color: var(--ctxweb-text-primary);
+}
+
+.header{
+    background-color: var(--ctxweb-background-alt);
+    padding: 1rem;
+    text-align: center;
+}
+
+#H1Text-Effect-lsd {
+    position: relative;
+    background: linear-gradient(90deg, var(--ctxweb-primary), var(--ctxweb-secondary), var(--ctxweb-primary-active), var(--ctxweb-secondary-active), var(--ctxweb-primary));
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: lsdGradient 3s linear infinite;
+    font-family: var(--ctxweb-font-family-alt);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-shadow:
+        0 0 8px var(--ctxweb-primary),
+        0 0 16px var(--ctxweb-secondary),
+        0 0 32px var(--ctxweb-primary-active),
+        2px 2px 6px var(--ctxweb-secondary-active);
+    filter: brightness(1.01) saturate(1.6);
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+#H1Text-Effect-lsd::after {
+    content: none;
+}
+
+
+#H1Text-Effect-lsd::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px; top: 2px;
+    width: 100%; height: 100%;
+    z-index: 2;
+    color: #ff00c881;
+    opacity: 0.7;
+    pointer-events: none;
+    mix-blend-mode: lighten;
+    animation: glitch 1s infinite linear alternate-reverse;
+}
+
+@keyframes lsdGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes glitch {
+    0% { transform: translate(0, 0); opacity: 0.7;}
+    20% { transform: translate(-2px, 2px); opacity: 0.8;}
+    40% { transform: translate(-4px, -1px); opacity: 0.6;}
+    60% { transform: translate(3px, 1px); opacity: 0.8;}
+    80% { transform: translate(2px, -2px); opacity: 0.7;}
+    100% { transform: translate(0, 0); opacity: 0.7;}
+}
+
+.Logo-Image {
+    width: 80px;
+    height: auto;
+    margin: 1rem auto;
+    display: block;
+    filter: drop-shadow(0 0 6px var(--ctxweb-primary)) drop-shadow(0 0 12px var(--ctxweb-secondary));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav{
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.nav a{
+    color: var(--ctxweb-text-primary);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav a:hover{
+    background-color: var(--ctxweb-primary);
+    color: #fff;
+    box-shadow: 0 0 8px var(--ctxweb-shadow-light), 0 0 16px var(--ctxweb-shadow-medium);
+}
+
+.Document {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1a1519 60%, #2a1a2e 100%);
+    border-radius: 24px;
+    box-shadow: 0 0 32px 0 var(--ctxweb-shadow-dark), 0 2px 24px 0 var(--ctxweb-shadow-medium);
+    animation: fadeInUp 1s cubic-bezier(.39,.575,.565,1) both;
+}
+
+.Document-Title {
+    display: block;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, var(--ctxweb-primary), var(--ctxweb-secondary), var(--ctxweb-primary-active));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGradient 4s ease-in-out infinite alternate;
+    letter-spacing: 2px;
+    text-align: center;
+    text-shadow: 0 2px 16px var(--ctxweb-primary-active), 0 0 8px var(--ctxweb-secondary);
+}
+
+.Document-Content {
+    font-size: 1.1rem;
+    color: var(--ctxweb-text-secondary);
+    line-height: 1.7;
+    animation: fadeIn 1.5s 0.2s both;
+}
+
+.Document-Content h3 {
+    margin-top: 1.5rem;
+    color: var(--ctxweb-secondary);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 8px var(--ctxweb-primary);
+}
+
+.Document-Content ul {
+    margin: 1rem 0 1.5rem 2rem;
+    list-style: disc;
+}
+
+.Document-Content li {
+    margin-bottom: 0.5rem;
+    color: var(--ctxweb-text-tertiary);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.Document-Content li:hover {
+    color: var(--ctxweb-primary-hover);
+    text-shadow: 0 0 8px var(--ctxweb-secondary-hover);
+}
+
+.Document-Tabele {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: linear-gradient(120deg, #2a1a2e 60%, #1a1519 100%);
+    border-radius: 24px;
+    box-shadow: 0 0 32px 0 var(--ctxweb-shadow-dark), 0 2px 24px 0 var(--ctxweb-shadow-medium);
+    animation: fadeInUp 1.2s 0.2s cubic-bezier(.39,.575,.565,1) both;
+}
+
+.Document-Tabele .Document-Title {
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    background: linear-gradient(90deg, var(--ctxweb-secondary), var(--ctxweb-primary));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGradient 4s ease-in-out infinite alternate;
+    text-align: center;
+    text-shadow: 0 2px 16px var(--ctxweb-secondary-active), 0 0 8px var(--ctxweb-primary);
+}
+
+.Document-Tabele table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background: rgba(30, 20, 40, 0.85);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 16px var(--ctxweb-shadow-medium);
+    animation: fadeIn 1.5s 0.4s both;
+}
+
+.Document-Tabele th, .Document-Tabele td {
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+}
+
+.Document-Tabele th {
+    background: linear-gradient(90deg, var(--ctxweb-primary), var(--ctxweb-secondary));
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--ctxweb-primary-active);
+    text-shadow: 0 1px 8px var(--ctxweb-secondary);
+}
+
+.Document-Tabele td {
+    color: var(--ctxweb-text-secondary);
+    border-bottom: 1px solid var(--ctxweb-border-default);
+    transition: background 0.3s, color 0.3s;
+}
+
+.Document-Tabele tr:hover td {
+    background: var(--ctxweb-primary-disabled);
+    color: var(--ctxweb-secondary-active);
+}
+
+.all-Info-Computer-log {
+    color: var(--ctxweb-secondary-hover);
+    background : linear-gradient(135deg, #1a1519 60%, #2a1a2e 100%);
+    --webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    display: block;
+    border-left: 4px solid var(--ctxweb-secondary);
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    font-family: var(--ctxweb-font-family-alt);
+    animation: fadeIn 1.5s 0.6s both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes titleGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.gallery {
+    max-width: 900px;
+    margin: 2.5rem auto;
+    padding: 2rem;
+    background: linear-gradient(120deg, #2a1a2e 60%, #1a1519 100%);
+    border-radius: 24px;
+    box-shadow: 0 0 32px 0 var(--ctxweb-shadow-dark), 0 2px 24px 0 var(--ctxweb-shadow-medium);
+    animation: fadeInUp 1.2s 0.3s cubic-bezier(.39,.575,.565,1) both;
+    text-align: center;
+}
+
+.gallery .Document-Title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    background: linear-gradient(90deg, var(--ctxweb-primary), var(--ctxweb-secondary));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: titleGradient 4s ease-in-out infinite alternate;
+    text-shadow: 0 2px 16px var(--ctxweb-secondary-active), 0 0 8px var(--ctxweb-primary);
+}
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.gallery-image {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 18px;
+    box-shadow: 0 0 16px var(--ctxweb-primary), 0 0 32px var(--ctxweb-secondary-hover);
+    border: 3px solid var(--ctxweb-primary);
+    transition: transform 0.4s cubic-bezier(.39,.575,.565,1), box-shadow 0.4s, border-color 0.4s;
+    background: #222;
+    cursor: pointer;
+    animation: fadeIn 1.2s;
+}
+
+.gallery-image:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 0 32px var(--ctxweb-secondary), 0 0 64px var(--ctxweb-primary-active);
+    border-color: var(--ctxweb-secondary-active);
+    z-index: 2;
+}
+
+footer{
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--ctxweb-background-alt);
+    color: var(--ctxweb-text-disabled);
+    font-size: 0.9rem;
+    box-shadow: inset 0 1px 4px var(--ctxweb-shadow-dark);
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    .Document, .Document-Tabele, .gallery {
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    .Document-Title {
+        font-size: 1.5rem;
+    }
+
+    .Document-Content {
+        font-size: 1rem;
+    }
+
+    .gallery-image {
+        width: 120px;
+        height: 120px;
+    }
+}
